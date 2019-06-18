@@ -17,4 +17,4 @@ RUN /usr/local/bin/npm install -g http-server
 ENV REDIS_HOST=redis
 
 EXPOSE 8080
-CMD [ "nohup /usr/local/bin/http-server && redis-server" ]
+CMD [ "/usr/bin/nohup /usr/local/bin/http-server && /usr/local/bin/redis-server" ]
