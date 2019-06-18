@@ -13,8 +13,10 @@ RUN buildDeps='xz-utils' \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
 RUN /usr/local/bin/npm install -g http-server
+COPY ./entrypoint.sh /tmp/entrypoint.sh
+RUN chmod +x /tmp/entrypoint.sh
 
 ENV REDIS_HOST=redis
 
 EXPOSE 8080
-CMD [ "/usr/bin/nohup /usr/local/bin/http-server && /usr/local/bin/redis-server" ]
+CMD [ "/tmp/entrypoint.sh" ]
